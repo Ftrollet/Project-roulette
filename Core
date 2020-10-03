@@ -1,0 +1,49 @@
+import random
+import matplotlib.pyplot as plt
+x=50
+Produit=0
+Liste=[]
+i=0
+Pai=False
+Imp=False
+abscisses=[]
+ordonnées=[]
+while x>0 and i <10:
+    y=random.randint(0,37)
+    Liste.insert(0,y)
+    pairs=0
+    impairs=0
+    Win = False
+    if len(Liste)>5:
+        mise=0
+        while Win == False and x > 0:
+            for n in range(5):
+                if Liste[n]%2==1:
+                    impairs+=1
+                else:
+                    pairs +=1
+            if impairs == 5 :
+                mise = 1
+                x= x-mise
+                Imp = True
+            elif pairs == 5 :
+                mise =1
+                x = x-mise
+                Pai = True
+            y=random.randint(0,37)
+            Liste.insert(0,y)
+            del Liste[-1]
+            if y % 2 == 0 and Imp==True:
+                Win = True
+                x += mise*2
+            elif y % 2 == 1 and Pai==True:
+                Win=True
+                x += mise*2
+            else :
+                mise = mise*2
+                x = x-mise
+                
+            
+plt.plot(abscisses,ordonnées)
+plt.show()
+print (x)
